@@ -9,7 +9,7 @@ export default function App() {
     console.log(getVerses);
     console.log(functionBased);
 
-    //axios.request(getVerses).then(({ data: response }) => setData(response));
+    axios.request(getVerses).then(({ data: response }) => setData(response));
   }, []);
 
   useEffect(() => {
