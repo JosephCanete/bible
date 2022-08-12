@@ -13,8 +13,23 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Paper from "@mui/material/Paper";
 import "./Navigation.scss";
+import { Link } from "react-router-dom";
 
-const pages = ["Home", "Bible", "About Us"];
+const pages = [
+  {
+    header: "Home",
+    routes: "",
+  },
+  {
+    header: "Bible",
+    routes: "bible",
+  },
+  {
+    header: "About Us",
+    routes: "about",
+  },
+];
+
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navigation = () => {
@@ -52,8 +67,6 @@ const Navigation = () => {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -65,7 +78,9 @@ const Navigation = () => {
             }}
             onClick={(event) => event.preventDefault()}
           >
-            Bible
+            <Link to={`/`} style={{ textDecoration: "none", color: "white" }}>
+              Bible
+            </Link>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -98,8 +113,15 @@ const Navigation = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.header} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">
+                    <Link
+                      style={{ textDecoration: "none", color: "black" }}
+                      to={`/${page.routes}`}
+                    >
+                      {page.header}
+                    </Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -116,8 +138,6 @@ const Navigation = () => {
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href=""
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -129,16 +149,23 @@ const Navigation = () => {
               textDecoration: "none",
             }}
           >
-            Bible Me Version
+            <Link to={`/`} style={{ textDecoration: "none", color: "white" }}>
+              Bible
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.header}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                <Link
+                  style={{ textDecoration: "none", color: "black" }}
+                  to={`/${page.routes}`}
+                >
+                  {page.header}
+                </Link>
               </Button>
             ))}
           </Box>
