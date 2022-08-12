@@ -1,18 +1,12 @@
+import { useState } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
 import "./Scriptures.scss";
 
 export default function Scriptures({ data }) {
-  const [selected, setSelected] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState("");
-
-  const passageSelectedHandler = (event, index, item) => {
-    setSelected(!selected);
-    setSelectedIndex(index);
-  };
 
   return (
     <>
@@ -21,7 +15,10 @@ export default function Scriptures({ data }) {
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Paper elevation={5} sx={{ p: "2rem" }}>
-                <Typography variant="h2">{data.book}</Typography>
+                <Typography variant="h2">
+                  {data.book} {` `}
+                  {data.chapter}
+                </Typography>
                 <Typography variant="h5" sx={{ py: "1rem" }}>
                   {data.content.scriptures.title}
                 </Typography>
@@ -31,9 +28,7 @@ export default function Scriptures({ data }) {
                       variant="subtitle1"
                       className="passage--content"
                       key={index}
-                      onClick={(event) =>
-                        passageSelectedHandler(event, index, item)
-                      }
+                      onClick={() => setSelectedIndex(index)}
                       style={{
                         textDecoration:
                           selectedIndex === index ? "underline" : "none",
