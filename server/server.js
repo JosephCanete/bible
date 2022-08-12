@@ -6,7 +6,7 @@ require("dotenv").config();
 
 //API
 const BOOKS = require("./api/Book/books");
-const VERSES = require("./api/Verses/verses");
+const SCRIPTURES = require("./api/Scriptures/scriptures");
 
 app.use(cors());
 
@@ -28,8 +28,8 @@ app.get("/api/books/old-testiments", (request, response) => {
   response.json(BOOKS.OLD_TESTIMENTS);
 });
 
-app.get("/api/passage/genesis", (request, response) => {
-  response.json(VERSES.GENESIS);
+app.get("/api/scriptures/genesis", (request, response) => {
+  response.json(SCRIPTURES.GENESIS);
 });
 
 app.listen(PORT, console.log(`Our server is listening at PORT ${PORT}`));
