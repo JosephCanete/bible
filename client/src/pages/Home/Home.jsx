@@ -1,14 +1,14 @@
 import React from "react";
 import Container from "@mui/material/Container";
 import Navigation from "../../components/Navigation";
-import Passage from "../Bible/Passage";
+import Scriptures from "../Bible/Scriptures";
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <>
       <Navigation />
       <Container maxWidth="lg">
-        <Passage />
+        <Scriptures data={data} />
       </Container>
     </>
   );
