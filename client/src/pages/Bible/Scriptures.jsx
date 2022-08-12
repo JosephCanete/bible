@@ -7,6 +7,7 @@ import "./Scriptures.scss";
 
 export default function Scriptures({ data }) {
   const [selectedIndex, setSelectedIndex] = useState("");
+  const [toggle, setToggle] = useState(false);
 
   return (
     <>
@@ -28,7 +29,10 @@ export default function Scriptures({ data }) {
                       variant="subtitle1"
                       className="passage--content"
                       key={index}
-                      onClick={() => setSelectedIndex(index)}
+                      onClick={() => {
+                        setToggle(!toggle);
+                        setSelectedIndex(index);
+                      }}
                       style={{
                         textDecoration:
                           selectedIndex === index ? "underline" : "none",
