@@ -28,7 +28,7 @@ app.get("/api/books/old-testiments", (request, response) => {
   response.json(BOOKS.OLD_TESTIMENTS);
 });
 
-app.get("/api/scriptures/genesis", (request, response) => {
+app.get("/api/scriptures/", (request, response) => {
   response.json(SCRIPTURES.GENESIS);
 });
 
