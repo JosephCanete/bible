@@ -3,6 +3,7 @@ import axios from "axios";
 import Container from "@mui/material/Container";
 import Navigation from "./components/Navigation";
 import Scriptures from "./pages/Bible/Scriptures";
+import Routes from "./Routes/Routes";
 
 export default function App() {
   const [data, setData] = useState();
@@ -15,7 +16,7 @@ export default function App() {
     <>
       <Navigation />
       <Container maxWidth="lg">
-        <Scriptures data={data} />
+        <Routes data={data} />
       </Container>
     </>
   );
