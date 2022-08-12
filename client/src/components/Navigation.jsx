@@ -12,6 +12,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import Paper from "@mui/material/Paper";
+import "./Navigation.scss";
 
 const pages = ["Home", "Bible", "About Us"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
@@ -39,7 +41,15 @@ const Navigation = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <Paper
+            variant="none"
+            sx={{
+              display: { xs: "none", md: "flex", background: "transparent" },
+              mr: 1,
+            }}
+          >
+            <img className="icon" src="/assets/bible.png" alt="bible-icon" />
+          </Paper>
           <Typography
             variant="h6"
             noWrap
@@ -54,6 +64,7 @@ const Navigation = () => {
               color: "inherit",
               textDecoration: "none",
             }}
+            onClick={(event) => event.preventDefault()}
           >
             Bible
           </Typography>
@@ -94,7 +105,15 @@ const Navigation = () => {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <Paper
+            variant="none"
+            sx={{
+              display: { xs: "flex", md: "none", background: "transparent" },
+              mr: 1,
+            }}
+          >
+            <img className="icon" src="/assets/bible.png" alt="bible-icon" />
+          </Paper>
           <Typography
             variant="h5"
             noWrap
