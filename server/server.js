@@ -10,7 +10,7 @@ const SCRIPTURES = require("./api/Scriptures/scriptures");
 
 app.use(cors());
 
-app.get("/", (request, response) => {
+app.get("/api", (request, response) => {
   response.json(
     "Available endpoints are [/api/books], [/api/books/old-testimenst], [/api/books/new-testimenst]"
   );
