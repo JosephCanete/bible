@@ -9,6 +9,11 @@ import "./Scriptures.scss";
 export default function Scriptures({ data }) {
   const [selectedIndex, setSelectedIndex] = useState("");
   const [toggle, setToggle] = useState(false);
+  const [verse, setVerse] = useState({
+    book: "",
+    chapter: "",
+    verse: "",
+  });
 
   useEffect(() => {
     //If toggled something we want to show modal
@@ -18,6 +23,14 @@ export default function Scriptures({ data }) {
   const passageSelectedHandler = (event, index) => {
     setToggle(!toggle);
     setSelectedIndex(index);
+    setVerse({
+      book: data.book,
+      chapter: data.chapter,
+      verseNumber: index + 1,
+      verseContent: event.target.innerText,
+    });
+    // console.log(data.content.scriptures.passage[index]);
+    console.log(data.book);
   };
 
   return (
@@ -27,7 +40,7 @@ export default function Scriptures({ data }) {
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <Paper elevation={5} sx={{ p: "2rem" }}>
-                <Typography variant="h2">
+                <Typography variant="h3">
                   {data.book} {` `}
                   {data.chapter}
                 </Typography>
@@ -58,7 +71,7 @@ export default function Scriptures({ data }) {
       ) : (
         "loading"
       )}
-      {<ActionMenu isOpen={toggle} setIsOpen={setToggle} />}
+      {<ActionMenu isOpen={toggle} setIsOpen={setToggle} verse={verse} />}
     </>
   );
 }

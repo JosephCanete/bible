@@ -1,6 +1,6 @@
 module.exports.GENESIS = {
   book: "Genesis",
-  chapter: 1,
+  chapter: "1",
   content: {
     scriptures: {
       title: "The Account of Creation",
