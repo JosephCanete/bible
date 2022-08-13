@@ -1,13 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
+import ActionMenu from "../../components/ActionMenu";
 import "./Scriptures.scss";
 
 export default function Scriptures({ data }) {
   const [selectedIndex, setSelectedIndex] = useState("");
   const [toggle, setToggle] = useState(false);
+
+  useEffect(() => {
+    //If toggled something we want to show modal
+    toggle && console.log("selected something");
+  }, [toggle]);
+
+  const passageSelectedHandler = (event, index) => {
+    setToggle(!toggle);
+    setSelectedIndex(index);
+  };
 
   return (
     <>
@@ -29,13 +40,12 @@ export default function Scriptures({ data }) {
                       variant="subtitle1"
                       className="passage--content"
                       key={index}
-                      onClick={() => {
-                        setToggle(!toggle);
-                        setSelectedIndex(index);
-                      }}
+                      onClick={(event) => passageSelectedHandler(event, index)}
                       style={{
                         textDecoration:
-                          selectedIndex === index ? "underline" : "none",
+                          selectedIndex === index && toggle
+                            ? "underline"
+                            : "none",
                       }}
                     >
                       {item}
@@ -48,6 +58,7 @@ export default function Scriptures({ data }) {
       ) : (
         "loading"
       )}
+      {<ActionMenu isOpen={toggle} setIsOpen={setToggle} />}
     </>
   );
 }

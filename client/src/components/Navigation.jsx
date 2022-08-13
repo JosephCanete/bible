@@ -161,7 +161,7 @@ const Navigation = () => {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 <Link
-                  style={{ textDecoration: "none", color: "black" }}
+                  style={{ textDecoration: "none", color: "white" }}
                   to={`/${page.routes}`}
                 >
                   {page.header}
