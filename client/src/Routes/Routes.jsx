@@ -6,7 +6,8 @@ import About from "../pages/About/About";
 export default function Routes({ data }) {
   return (
     <MyRoutes>
-      <Route path="/" element={<Home />} />
+      {/* <Route path="/" element={<Home />} /> */}
+      <Route path="/" element={<Scriptures data={data} />} />
       <Route path="/bible" element={<Scriptures data={data} />} />
       <Route path="/About" element={<About />} />
     </MyRoutes>

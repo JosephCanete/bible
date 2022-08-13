@@ -8,8 +8,13 @@ require("dotenv").config();
 const BOOKS = require("./api/Book/books");
 const SCRIPTURES = require("./api/Scriptures/scriptures");
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("build"));
+  app.get("*", (req, res) => {
+    req.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+  });
+}
 app.use(cors());
-
 app.get("/api", (request, response) => {
   response.json(
     "Available endpoints are [/api/books], [/api/books/old-testimenst], [/api/books/new-testimenst]"
