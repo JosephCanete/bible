@@ -8,10 +8,15 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
+  return <Slide direction="left" ref={ref} {...props} />;
 });
 
-export default function ActionMenu({ isOpen, setIsOpen }) {
+export default function ActionMenu({ isOpen, setIsOpen, verse }) {
+  const copyVerse = () => {
+    console.log(`Verse copied ${verse.verseContent}`);
+    handleClose();
+  };
+
   const handleClose = () => {
     setIsOpen(!isOpen);
   };
@@ -24,16 +29,27 @@ export default function ActionMenu({ isOpen, setIsOpen }) {
       aria-describedby="alert-dialog-slide-description"
       maxWidth="lg"
     >
-      <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+      <DialogTitle>
+        {verse && verse.book} {` `}
+        {verse && verse.chapter}
+        {`:`}
+        {verse && verse.verseNumber}
+      </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">
-          Let Google help apps determine location. This means sending anonymous
-          location data to Google, even when no apps are running.
+          {verse && verse.verseContent}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Disagree</Button>
-        <Button onClick={handleClose}>Agree</Button>
+        <Button onClick={copyVerse} color="primary">
+          Copy
+        </Button>
+        <Button onClick={handleClose} color="secondary">
+          Highlight
+        </Button>
+        <Button onClick={handleClose} color="error">
+          Cancel
+        </Button>
       </DialogActions>
     </Dialog>
   );
