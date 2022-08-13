@@ -19,7 +19,6 @@ export default function App() {
       <Navigation />
       <Container maxWidth="lg">
         <Routes data={data} />
-        {/* <ActionMenu /> */}
       </Container>
     </>
   );
