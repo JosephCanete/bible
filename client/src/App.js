@@ -8,7 +8,11 @@ import { useSelector } from "react-redux";
 export default function App() {
   const [data, setData] = useState();
   useEffect(() => {
-    axios.get("/api/scriptures/").then(({ data }) => setData(data));
+    try {
+      axios.get("/api/scriptures/").then(({ data }) => setData(data));
+    } catch (error) {
+      console.error(error);
+    }
   }, []);
 
   const state = useSelector((state) => state);
