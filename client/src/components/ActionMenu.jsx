@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, forwardRef } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -7,13 +7,14 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 
-const Transition = React.forwardRef(function Transition(props, ref) {
+const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="left" ref={ref} {...props} />;
 });
 
 export default function ActionMenu({ isOpen, setIsOpen, verse }) {
+  const [selected, setSelected] = useState("");
+
   const copyVerse = () => {
-    console.log(`Verse copied ${verse.verseContent}`);
     handleClose();
   };
 
@@ -21,13 +22,18 @@ export default function ActionMenu({ isOpen, setIsOpen, verse }) {
     setIsOpen(!isOpen);
   };
 
+  const highlightVerse = (event) => {
+    setSelected(event.target.innerText);
+  };
+
   return (
     <Dialog
+      fullWidth
+      maxWidth="md"
       open={isOpen}
-      TransitionComponent={Transition}
+      // TransitionComponent={Transition}
       onClose={handleClose}
       aria-describedby="alert-dialog-slide-description"
-      maxWidth="lg"
     >
       <DialogTitle>
         {verse && verse.book} {` `}
@@ -44,7 +50,7 @@ export default function ActionMenu({ isOpen, setIsOpen, verse }) {
         <Button onClick={copyVerse} color="primary">
           Copy
         </Button>
-        <Button onClick={handleClose} color="secondary">
+        <Button onClick={(event) => highlightVerse(event)} color="secondary">
           Highlight
         </Button>
         <Button onClick={handleClose} color="error">

@@ -35,6 +35,7 @@ export default function Scriptures({ data }) {
 
   return (
     <>
+      {console.log(data)}
       {data ? (
         <Box sx={{ my: "2rem" }}>
           <Grid container spacing={1}>
@@ -61,7 +62,8 @@ export default function Scriptures({ data }) {
                             : "none",
                       }}
                     >
-                      {item}
+                      {item.verse} {` `}
+                      {item.content}
                     </Typography>
                   ))}
               </Paper>
