@@ -1,7 +1,9 @@
 const reducer = (state = false, action) => {
   switch (action.type) {
-    case "TOGGLE":
-      return !state;
+    case "SELECTED":
+      return true;
+    case "UNSELECTED":
+      return false;
     default:
       return state;
   }
