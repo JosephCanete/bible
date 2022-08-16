@@ -17,7 +17,7 @@ export default function Scriptures({ data }) {
 
   useEffect(() => {
     //If toggled something we want to show modal
-    toggle && console.log("selected something");
+    // toggle && console.log("selected something");
   }, [toggle]);
 
   const passageSelectedHandler = (event, index) => {
@@ -30,12 +30,11 @@ export default function Scriptures({ data }) {
       verseContent: event.target.innerText,
     });
     // console.log(data.content.scriptures.passage[index]);
-    console.log(data.book);
+    // console.log(data.book);
   };
 
   return (
     <>
-      {console.log(data)}
       {data ? (
         <Box sx={{ my: "2rem" }}>
           <Grid container spacing={1}>
@@ -60,6 +59,7 @@ export default function Scriptures({ data }) {
                           selectedIndex === index && toggle
                             ? "underline"
                             : "none",
+                        backgroundColor: item.highlight && "red",
                       }}
                     >
                       {item.verse} {` `}

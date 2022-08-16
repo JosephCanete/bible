@@ -3,7 +3,9 @@ import axios from "axios";
 import Container from "@mui/material/Container";
 import Navigation from "./components/Navigation";
 import Routes from "./Routes/Routes";
-import { useSelector } from "react-redux";
+import { bindActionCreators } from "redux";
+import { useSelector, useDispatch } from "react-redux";
+import { actionCreators } from "./state/index";
 
 export default function App() {
   const [data, setData] = useState();
@@ -16,7 +18,8 @@ export default function App() {
   }, []);
 
   const state = useSelector((state) => state);
-  console.log("state here", state);
+  const dispatch = useDispatch();
+  const AC = bindActionCreators(actionCreators, dispatch);
 
   return (
     <>

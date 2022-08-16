@@ -22,8 +22,10 @@ export default function ActionMenu({ isOpen, setIsOpen, verse }) {
     setIsOpen(!isOpen);
   };
 
-  const highlightVerse = (event) => {
-    setSelected(event.target.innerText);
+  const highlightVerse = () => {
+    console.log("highlight verse now");
+    console.log(verse);
+    //close modal
   };
 
   return (
